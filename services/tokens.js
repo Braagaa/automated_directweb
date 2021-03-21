@@ -1,8 +1,8 @@
 const fetch = require("node-fetch");
 
 const baseURL = "https://tokendemo.pd-dev.awstest.loginid.io";
-const privateKey = process.env.VUE_APP_PRIVATE_KEY.replace(/\\n/g, "\n");
-const clientId = process.env.VUE_APP_API_KEY;
+const privateKey = process.env.PRIVATE_KEY.replace(/\\n/g, "\n");
+const clientId = process.env.API_KEY;
 
 class PetersTokens {
   static async callSecret() {
