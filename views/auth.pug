@@ -1,0 +1,10 @@
+extends layout.pug
+
+block body
+	div.App
+		div.form
+			p.message
+			input(placeholder="Username")
+			button Authenticate
+	script(src="/js/fido2.js")
+	script(src="/js/auth.js")

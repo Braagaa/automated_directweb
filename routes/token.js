@@ -34,4 +34,11 @@ router.post("/", cors(), async (req, res) => {
   }
 });
 
+router.get("/env", (_, res) => {
+  return res.status(200).json({
+    apiKey: process.env.API_KEY,
+    baseURI: process.env.BASE_URI,
+  });
+});
+
 module.exports = router;

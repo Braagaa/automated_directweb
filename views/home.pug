@@ -1,4 +1,14 @@
 extends layout.pug
 
 block body
+	div.App
+		div.form
+			p.message
+			input#username(placeholder="Username")
+			input#email(placeholder="Email")
+			button Push Authentication
+			button Add Authenticator
+			button Login
+			button Register
+	script(src="/js/fido2.js")
 	script(src="/js/index.js")
