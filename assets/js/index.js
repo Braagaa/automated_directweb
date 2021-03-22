@@ -11,6 +11,7 @@
 
   registerButton.addEventListener("click", async () => {
     try {
+      //user.id
       const { username } = await dw.register(usernameInput.value);
       alert(`${username} successfully registered!`);
       usernameInput.value = "";

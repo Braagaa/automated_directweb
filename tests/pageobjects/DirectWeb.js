@@ -1,5 +1,4 @@
 const Page = require("./page");
-const MailTrap = require("./EmailService");
 const Selectors = require("./selectors");
 
 const { button, input } = Selectors.selectors;
@@ -23,10 +22,15 @@ module.exports = class DirectWeb extends Page {
     await this.click(button("Login"));
   }
 
-  async pushAuth(directweb, username, emailService) {
+  async pushAddAuth(directweb, username, emailService, pushOrAdd = 0) {
+    const typeButton =
+      pushOrAdd === 0
+        ? button("Push Authentication")
+        : button("Add Authenticator");
+
     await this.type(input("Username"), username);
     await this.type(input("Email"), emailService.email);
-    await this.click(button("Push Authentication"));
+    await this.click(typeButton);
 
     const sessionUrl = await emailService.obtainLatestEmailLink();
     await directweb.navigateTo(sessionUrl);

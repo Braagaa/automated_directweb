@@ -40,7 +40,6 @@ describe("Login", () => {
   it("Should successfully login", async () => {
     await directweb.login(username);
     const result = await directweb.getAlertText();
-    console.log(result);
     expect(result).to.eq(`${username} successfully logged in!`);
   });
 
@@ -64,7 +63,7 @@ describe("Push Auth", async () => {
   });
 
   it("Should successfully request a push authentication", async () => {
-    await directweb.pushAuth(directweb1, username1, emailService);
+    await directweb.pushAddAuth(directweb1, username1, emailService);
     const requestResult = await directweb.getAlertText();
     const grantResult = await directweb1.getAlertText();
 
@@ -73,11 +72,41 @@ describe("Push Auth", async () => {
   });
 
   it("Should successfully grant a push request", async () => {
-    await directweb1.pushAuth(directweb, username, emailService);
+    await directweb1.pushAddAuth(directweb, username, emailService);
     const requestResult = await directweb1.getAlertText();
     const grantResult = await directweb.getAlertText();
 
     expect(requestResult).to.eq("Push auth successful!");
     expect(grantResult).to.eq("Successfully authenticated!");
   });
+});
+
+describe("Add Authenticator", () => {
+  afterEach(async () => {
+    await directweb.acceptAlert();
+    await directweb1.acceptAlert();
+  });
+
+  it("Should successfully request add authenticator", async () => {
+    await directweb.pushAddAuth(directweb1, username1, emailService, 1);
+    const requestResult = await directweb.getAlertText();
+    const grantResult = await directweb1.getAlertText();
+
+    expect(requestResult).to.eq("Add auth successful!");
+    expect(grantResult).to.eq("Successfully authenticated!");
+  });
+
+  it("Should successfully grant to add authenticator", async () => {
+    await directweb1.pushAddAuth(directweb, username, emailService, 1);
+    const requestResult = await directweb1.getAlertText();
+    const grantResult = await directweb.getAlertText();
+
+    expect(requestResult).to.eq("Add auth successful!");
+    expect(grantResult).to.eq("Successfully authenticated!");
+  });
+});
+
+after(async () => {
+  await directweb.close();
+  await directweb1.close();
 });
