@@ -33,6 +33,7 @@ module.exports = class DirectWeb extends Page {
     await this.click(typeButton);
 
     const sessionUrl = await emailService.obtainLatestEmailLink();
+    console.log(sessionUrl);
     await directweb.navigateTo(sessionUrl);
     await directweb.type(input("Username"), username);
     await directweb.click(button("Authenticate"));

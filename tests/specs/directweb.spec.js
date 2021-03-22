@@ -88,6 +88,7 @@ describe("Cross Validations", async () => {
 
   after(async () => {
     await directweb.acceptAlert();
+    await directweb1.acceptAlert();
   });
 });
 
