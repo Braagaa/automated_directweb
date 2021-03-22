@@ -75,6 +75,7 @@ module.exports = class Page {
     await this.driver.wait(until.alertIsPresent());
     const windowHandle = await this.driver.getWindowHandle();
     const alert = await this.driver.switchTo().alert();
+    await this.wait();
     const alertText = await alert.accept();
     await this.driver.switchTo().window(windowHandle);
     return alertText;

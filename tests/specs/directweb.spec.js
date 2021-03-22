@@ -32,7 +32,6 @@ describe("Register", () => {
   });
 
   after(async () => {
-    await directweb.wait();
     await directweb.acceptAlert();
   });
 });
@@ -46,7 +45,6 @@ describe("Login", () => {
   });
 
   after(async () => {
-    await directweb.wait();
     await directweb.acceptAlert();
   });
 });
@@ -57,7 +55,6 @@ describe("Push Auth", async () => {
     await directweb1.addVirtualAuthenticator();
     await directweb1.open(URL);
     await directweb1.register(username1);
-    await directweb1.wait();
     await directweb1.acceptAlert();
   });
 
@@ -76,6 +73,11 @@ describe("Push Auth", async () => {
   });
 
   it("Should successfully grant a push request", async () => {
-    "";
+    await directweb1.pushAuth(directweb, username, emailService);
+    const requestResult = await directweb1.getAlertText();
+    const grantResult = await directweb.getAlertText();
+
+    expect(requestResult).to.eq("Push auth successful!");
+    expect(grantResult).to.eq("Successfully authenticated!");
   });
 });

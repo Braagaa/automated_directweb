@@ -38,6 +38,7 @@
       });
       alert("Push auth successful!");
       usernameInput.value = "";
+      emailInput.value = "";
     } catch (e) {
       console.log(e);
       alert(e.message);
@@ -51,6 +52,7 @@
       });
       alert("Add auth successful!");
       usernameInput.value = "";
+      emailInput.value = "";
     } catch (e) {
       console.log(e);
       alert(e.message);
