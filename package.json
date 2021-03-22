@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node app",
-    "test": "mocha ./tests/specs/ --bail --timeout 30000"
+    "test": "mocha ./tests/specs/ --bail --timeout 120000"
   },
   "keywords": [],
   "author": "",
@@ -22,6 +22,7 @@
     "chai": "^4.3.4",
     "chromedriver": "^89.0.0",
     "jabber": "^1.2.2",
+    "mailslurp-client": "^11.3.0",
     "mocha": "^8.3.2",
     "selenium-webdriver": "^4.0.0-beta.2"
   }

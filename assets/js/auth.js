@@ -10,7 +10,7 @@
           session_id: sessionId,
         },
       });
-      alert("Successfully added authenticator!");
+      alert("Successfully authenticated!");
       window.location.replace("/");
     } catch (e) {
       console.log(e);
