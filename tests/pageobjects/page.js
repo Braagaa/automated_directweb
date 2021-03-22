@@ -52,6 +52,7 @@ module.exports = class Page {
 
   async navigateTo(url) {
     await this.driver.get(url);
+    await this.wait();
   }
 
   async close() {
