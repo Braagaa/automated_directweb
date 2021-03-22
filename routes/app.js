@@ -2,11 +2,11 @@ const express = require("express");
 
 const router = express.Router();
 
-router.get("/push", (_, res) => {
+router.get("/push/authenticator", (_, res) => {
   return res.render("auth");
 });
 
-router.get("/add", (_, res) => {
+router.get("/add/authenticator", (_, res) => {
   return res.render("auth");
 });
 

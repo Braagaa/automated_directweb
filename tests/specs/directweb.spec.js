@@ -3,7 +3,7 @@ const MailSlurp = require("../pageobjects/EmailService");
 const { expect } = require("chai");
 const Jabber = require("jabber");
 
-const URL = "http://localhost:3000/";
+const URL = "https://directwebtest.herokuapp.com";
 const inboxId = "b41455f3-bcbe-4357-a536-a80e7f2c6fb1";
 const transientEmail = "b41455f3-bcbe-4357-a536-a80e7f2c6fb1@mailslurp.com";
 const mailslurpApiKey =
