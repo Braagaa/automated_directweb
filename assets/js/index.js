@@ -14,10 +14,11 @@
       //user.id
       const { username } = await dw.register(usernameInput.value);
       alert(`${username} successfully registered!`);
-      usernameInput.value = "";
     } catch (e) {
       console.log(e);
       alert(e.message);
+    } finally {
+      usernameInput.value = "";
     }
   });
 
@@ -25,10 +26,11 @@
     try {
       const { username } = await dw.login(usernameInput.value);
       alert(`${username} successfully logged in!`);
-      usernameInput.value = "";
     } catch (e) {
       console.log(e);
       alert(e.message);
+    } finally {
+      usernameInput.value = "";
     }
   });
 
@@ -38,11 +40,12 @@
         transient_email: emailInput.value,
       });
       alert("Push auth successful!");
-      usernameInput.value = "";
-      emailInput.value = "";
     } catch (e) {
       console.log(e);
       alert(e.message);
+    } finally {
+      usernameInput.value = "";
+      emailInput.value = "";
     }
   });
 
@@ -52,11 +55,12 @@
         transient_email: emailInput.value,
       });
       alert("Add auth successful!");
-      usernameInput.value = "";
-      emailInput.value = "";
     } catch (e) {
       console.log(e);
       alert(e.message);
+    } finally {
+      usernameInput.value = "";
+      emailInput.value = "";
     }
   });
 })();

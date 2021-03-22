@@ -16,7 +16,24 @@ const emailService = new MailSlurp(mailslurpApiKey, inboxId, transientEmail);
 let directweb;
 let directweb1;
 
-describe("Validation", () => {});
+describe("Baisc Validation", () => {
+  before(async () => {
+    directweb = new DirectWeb();
+    await directweb.addVirtualAuthenticator();
+    await directweb.open(URL);
+  });
+
+  it("Should not register an empty username", async () => {
+    await directweb.register("");
+    const result = await directweb.getAlertText();
+    expect(result).to.eq("Username Empty");
+  });
+
+  after(async () => {
+    await directweb.acceptAlert();
+    await directweb.close();
+  });
+});
 
 describe("Register", () => {
   before(async () => {
@@ -48,7 +65,7 @@ describe("Login", () => {
   });
 });
 
-describe("Push Auth", async () => {
+describe("Cross Validations", async () => {
   before(async () => {
     directweb1 = new DirectWeb();
     await directweb1.addVirtualAuthenticator();
@@ -57,12 +74,30 @@ describe("Push Auth", async () => {
     await directweb1.acceptAlert();
   });
 
+  it("Authenticator A should not be able to login with username of Authenticator B", async () => {
+    await directweb.login(username1);
+    const result = await directweb.getAlertText();
+    expect(result).to.eq("Your Identity could not be verified");
+  });
+
+  it("Authenticator B should not be able to login with username of Authenticator A", async () => {
+    await directweb1.login(username);
+    const result = await directweb1.getAlertText();
+    expect(result).to.eq("Your Identity could not be verified");
+  });
+
+  after(async () => {
+    await directweb.acceptAlert();
+  });
+});
+
+describe("Push Auth", async () => {
   afterEach(async () => {
     await directweb.acceptAlert();
     await directweb1.acceptAlert();
   });
 
-  it("Should successfully request a push authentication", async () => {
+  it("Should successfully request for push authentication", async () => {
     await directweb.pushAddAuth(directweb1, username1, emailService);
     const requestResult = await directweb.getAlertText();
     const grantResult = await directweb1.getAlertText();
