@@ -2,15 +2,15 @@ const express = require("express");
 
 const router = express.Router();
 
-router.use("/push", (_, res) => {
+router.get("/push", (_, res) => {
   return res.render("auth");
 });
 
-router.use("/add", (_, res) => {
+router.get("/add", (_, res) => {
   return res.render("auth");
 });
 
-router.use("/", (_, res) => {
+router.get("/", (_, res) => {
   return res.render("home");
 });
 
