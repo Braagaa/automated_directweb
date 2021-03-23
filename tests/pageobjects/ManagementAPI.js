@@ -24,5 +24,6 @@ module.exports = class ManagementAPI extends DirectWeb {
     const deleteButton = await user.findElement(button("Delete"));
     await deleteButton.click();
     await this.waitForRemovedElement(user);
+    this.users.delete(username);
   }
 };

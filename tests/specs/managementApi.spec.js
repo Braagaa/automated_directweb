@@ -21,6 +21,14 @@ describe("DELETE /users/:user_id", () => {
   });
 
   it("Should delete users", async () => {
-    console.log(management.users);
+    for (const username of users) {
+      await management.deleteUser(username);
+    }
+
+    expect(management.users).to.be.empty;
   });
+});
+
+after(async () => {
+  await management.close();
 });
