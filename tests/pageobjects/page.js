@@ -63,6 +63,14 @@ module.exports = class Page {
     await this.driver.wait(until.elementsLocated(selector));
   }
 
+  async waitForRemovedElement(selector) {
+    await this.driver.wait(until.stalenessOf(selector));
+  }
+
+  async findElement(selector) {
+    return await this.driver.findElement(selector);
+  }
+
   async getAlertText() {
     await this.driver.wait(until.alertIsPresent());
     const windowHandle = await this.driver.getWindowHandle();

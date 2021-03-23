@@ -8,7 +8,6 @@ const URL = process.env.TEST_URL;
 const inboxId = process.env.MAILSLURP_INBOX;
 const transientEmail = process.env.MAILSLURP_EMAIL;
 const mailslurpApiKey = process.env.MAILSLURP_API_KEY;
-console.log(inboxId);
 
 const jabber = new Jabber();
 const username = jabber.createEmail();

@@ -5,5 +5,6 @@ module.exports = class Selectors {
       xpath: `//input[@${prop}="${text}"]`,
     }),
     id: (id) => ({ css: `#${id}` }),
+    userElm: (username) => ({ xpath: `//span[text()="${username}"]/..` }),
   };
 };
