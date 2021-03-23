@@ -1,13 +1,14 @@
+require("dotenv").config();
 const DirectWeb = require("../pageobjects/DirectWeb");
 const MailSlurp = require("../pageobjects/EmailService");
 const { expect } = require("chai");
 const Jabber = require("jabber");
 
-const URL = "https://directwebtest.herokuapp.com";
-const inboxId = "b41455f3-bcbe-4357-a536-a80e7f2c6fb1";
-const transientEmail = "b41455f3-bcbe-4357-a536-a80e7f2c6fb1@mailslurp.com";
-const mailslurpApiKey =
-  "5a4e1e81756289634eb22501f196d0b8357713c71e9d1b7ac04ec10c840163e7";
+const URL = process.env.TEST_URL;
+const inboxId = process.env.MAILSLURP_INBOX;
+const transientEmail = process.env.MAILSLURP_EMAIL;
+const mailslurpApiKey = process.env.MAILSLURP_API_KEY;
+console.log(inboxId);
 
 const jabber = new Jabber();
 const username = jabber.createEmail();
