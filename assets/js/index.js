@@ -1,8 +1,6 @@
 (async function () {
   const usernameInput = document.getElementById("username");
   const emailInput = document.getElementById("email");
-  const usersListElm = document.querySelector(".users");
-  const users = new Set();
   const [
     pushButton,
     addButton,
@@ -10,31 +8,6 @@
     registerButton,
   ] = document.getElementsByTagName("button");
   const noop = () => {};
-
-  const createElement = (tagName, classes = []) => {
-    const elm = document.createElement(tagName);
-    classes.forEach((className) => elm.classList.add(className));
-    return elm;
-  };
-
-  const createUser = (username, id) => {
-    if (users.has(id)) return;
-
-    const userElm = createElement("div", ["user"]);
-    const userNameElm = createElement("span", ["user__name"]);
-    const userIdElm = createElement("span", ["user__id"]);
-    const deleteButtonElm = createElement("button");
-
-    userNameElm.textContent = username;
-    userIdElm.textContent = id;
-    deleteButtonElm.textContent = "Delete";
-
-    userElm.appendChild(userNameElm);
-    userElm.appendChild(userIdElm);
-    userElm.appendChild(deleteButtonElm);
-    usersListElm.appendChild(userElm);
-    users.add(id);
-  };
 
   registerButton.addEventListener("click", async () => {
     try {
@@ -90,22 +63,6 @@
     } finally {
       usernameInput.value = "";
       emailInput.value = "";
-    }
-  });
-
-  usersListElm.addEventListener("click", async (event) => {
-    const elm = event.target;
-    if (elm.tagName === "BUTTON") {
-      const userId = elm.previousElementSibling.textContent;
-      if (elm.textContent === "Delete") {
-        try {
-          const res = await fetch(`/management/delete/${userId}`);
-          const data = await res.json();
-          console.log(data);
-        } catch (error) {
-          console.log(error);
-        }
-      }
     }
   });
 })();

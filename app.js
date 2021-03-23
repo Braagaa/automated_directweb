@@ -1,6 +1,5 @@
 require("dotenv").config({ path: "./.env" });
 const express = require("express");
-const serveStatic = require("serve-static");
 const tokenRoute = require("./routes/token");
 const appRoute = require("./routes/app");
 const managementApiRoute = require("./routes/managementApi");

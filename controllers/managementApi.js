@@ -2,11 +2,12 @@ const managementApi = require("../services/managementApi");
 
 const deleteUser = async (req, res) => {
   const userId = req.params.user_id;
+  debugger;
   try {
     const response = await managementApi.deleteUser(userId);
 
     if (response.status === 204) {
-      return response.sendStatus(204);
+      return res.sendStatus(204);
     }
 
     const data = await response.json();

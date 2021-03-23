@@ -3,6 +3,7 @@ const jwt = require("jsonwebtoken");
 const uuid = require("uuid");
 
 const deleteUser = async (userId) => {
+  debugger;
   const managementApiServiceURL = process.env.MANAGEMENT_API_SERVICE_URL;
   const apiKey = process.env.MANAGEMENT_API_KEY;
   const pkey = process.env.MANAGEMENT_PKEY.replace(/\\n/g, "\n");
