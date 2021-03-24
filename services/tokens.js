@@ -1,8 +1,9 @@
 const fetch = require("node-fetch");
 
+const baseURL = "https://tokendemo.pd-dev.awstest.loginid.io";
+
 class PetersTokens {
   static async callSecret() {
-    const baseURL = "https://tokendemo.pd-dev.awstest.loginid.io";
     const privateKey = process.env.PKEY.replace(/\\n/g, "\n");
     const clientId = process.env.API_KEY;
 
@@ -21,6 +22,7 @@ class PetersTokens {
   }
 
   static async getToken(type, username) {
+    const clientId = process.env.API_KEY;
     const res = await fetch(`${baseURL}/token`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
