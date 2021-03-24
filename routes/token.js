@@ -4,7 +4,7 @@ const PetersTokens = require("../services/tokens");
 
 const router = express.Router();
 
-const error400 = (res, message) => res.status(400).json({ error: message });
+const error400 = (res, message) => res.status(400).json({ message });
 const validTypes = ["register", "login"];
 
 router.post("/", cors(), async (req, res) => {
