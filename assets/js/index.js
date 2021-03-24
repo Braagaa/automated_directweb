@@ -20,7 +20,7 @@
       createUser(username, user.id);
     } catch (e) {
       console.log(e);
-      alert(e.message);
+      alert(e.error);
     } finally {
       usernameInput.value = "";
     }
@@ -36,7 +36,7 @@
       createUser(username, user.id);
     } catch (e) {
       console.log(e);
-      alert(e.message);
+      alert(e.error);
     } finally {
       usernameInput.value = "";
     }

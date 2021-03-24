@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node app",
     "test": "mocha ./tests/specs/ --bail --timeout 120000",
+    "test:dw": "mocha ./tests/specs/directweb.spec.js --bail --timeout 120000",
     "test:mapi": "mocha ./tests/specs/managementAPI.spec.js --bail --timeout 120000"
   },
   "keywords": [],

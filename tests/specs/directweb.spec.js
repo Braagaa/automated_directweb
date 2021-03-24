@@ -30,13 +30,13 @@ describe("Baisc Validation", () => {
   it("Should not register an empty username", async () => {
     await directweb.register("");
     const result = await directweb.getAlertText();
-    expect(result).to.eq("Username Empty");
+    expect(result).to.eq("missing username");
   });
 
   it("Should not authenticate a non-email username", async () => {
     await directweb.register(jabber.createFullName());
     const result = await directweb.getAlertText();
-    expect(result).to.eq("Username Invalid");
+    expect(result).to.eq("missing username");
   });
 
   it("Should not login a non-registered username", async () => {
