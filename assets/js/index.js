@@ -13,7 +13,9 @@
     try {
       //user.id
       const token = await createAuthtoken(usernameInput.value, "register");
-      const { username, user } = await dw.register(usernameInput.value, {});
+      const { username, user } = await dw.register(usernameInput.value, {
+        authorization_token: token,
+      });
       alert(`${username} successfully registered!`);
       createUser(username, user.id);
     } catch (e) {
@@ -27,7 +29,9 @@
   loginButton.addEventListener("click", async () => {
     try {
       const token = await createAuthtoken(usernameInput.value, "login");
-      const { username, user } = await dw.login(usernameInput.value, {});
+      const { username, user } = await dw.login(usernameInput.value, {
+        authorization_token: token,
+      });
       alert(`${username} successfully logged in!`);
       createUser(username, user.id);
     } catch (e) {
