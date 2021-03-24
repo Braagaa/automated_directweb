@@ -12,10 +12,11 @@
   registerButton.addEventListener("click", async () => {
     try {
       //user.id
+      const username = usernameInput.value;
       const token = await fetch("/token", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username, type }),
+        body: JSON.stringify({ username, type: "register" }),
       }).catch(console.log);
 
       const { username, user } = await dw.register(usernameInput.value, {
