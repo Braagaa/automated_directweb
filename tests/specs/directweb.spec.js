@@ -36,7 +36,7 @@ describe("Baisc Validation", () => {
   it("Should not authenticate a non-email username", async () => {
     await directweb.register(jabber.createFullName());
     const result = await directweb.getAlertText();
-    expect(result).to.eq("missing username");
+    expect(result).to.eq("User not found");
   });
 
   it("Should not login a non-registered username", async () => {

@@ -30,7 +30,7 @@ router.post("/", cors(), async (req, res) => {
     return res.status(200).json({ token: tokenData.result });
   } catch (e) {
     console.error(e.message);
-    res.status(500).json({ error: e.message });
+    res.status(500).json({ message: e.message });
   }
 });
 
