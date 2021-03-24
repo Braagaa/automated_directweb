@@ -20,7 +20,7 @@ describe("DELETE /users/:user_id", () => {
     }
   });
 
-  it("Should delete users", async () => {
+  it("Should delete user", async () => {
     for (const username of users) {
       await management.deleteUser(username);
     }
