@@ -30,10 +30,17 @@ usersListElm.addEventListener("click", async (event) => {
   const elm = event.target;
   if (elm.tagName === "BUTTON") {
     const userId = elm.previousElementSibling.textContent;
+    const username =
+      elm.previousElementSibling.previousElementSibling.textContent;
     if (elm.textContent === "Delete") {
       try {
-        const res = await fetch(`/management/users/${userId}`, {
-          method: "DELETE",
+        const res = await fetch(`/management/users/delete`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({ username }),
         });
 
         if (res.status === 204) {
