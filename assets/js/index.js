@@ -13,10 +13,10 @@
     try {
       //user.id
       const token = await createAuthtoken(usernameInput.value, "register");
+      console.log(token);
       const { username, user } = await dw.register(usernameInput.value, {
         authorization_token: token,
       });
-      console.log(token);
       alert(`${username} successfully registered!`);
       createUser(username, user.id);
     } catch (e) {
