@@ -4,12 +4,14 @@ const baseURL = "https://tokendemo.pd-dev.awstest.loginid.io";
 
 class PetersTokens {
   static async callSecret() {
-    //const privateKey = process.env.PKEY.replace(/\\n/g, "\n");
-    const privateKey = `-----BEGIN EC PRIVATE KEY-----
+    const privateKey = process.env.PKEY.replace(/\\n/g, "\n");
+    /*
+const privateKey = `-----BEGIN EC PRIVATE KEY-----
 MHcCAQEEINlcCm07+PkJfxpvp0ikknlx9SCJ3ElZwqH4yGRQJ1etoAoGCCqGSM49
 AwEHoUQDQgAEBnmhlFab44f6n7RtqKMDd5vcMzjfLFhaxDZ6mU0cigA3jQpwcRBo
 z3ngrF518WY+6J9DWiiCn4KG0PbYh0Abng==
 -----END EC PRIVATE KEY-----`;
+*/
     const clientId = process.env.API_KEY;
 
     const res = await fetch(`${baseURL}/secret`, {
