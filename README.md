@@ -1,3 +1,9 @@
+## Set Up
+
+_yarn add package.json_
+
+Run at http://localhost:3000
+
 ## Environment Variables
 
 A .env is needed to run the app locally at http://localhost:3000
@@ -25,3 +31,11 @@ TEST_URL=
 <br>MAILSLURP_API_KEY=
 
 Take a look at .env_example for an example .env
+
+## Push Authentication / Add Authenticator
+
+### Enable Email Communication End Points
+
+| push auth          | add auth           |
+| ------------------ | ------------------ |
+| /add/authenticator | /add/authenticator |
